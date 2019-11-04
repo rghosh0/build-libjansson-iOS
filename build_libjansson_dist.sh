@@ -14,7 +14,7 @@ function build_for_arch() {
   export CFLAGS="-arch ${ARCH} -pipe -Os -gdwarf-2 -isysroot ${SYSROOT} -miphoneos-version-min=${IPHONEOS_DEPLOYMENT_TARGET} -fembed-bitcode"
   export LDFLAGS="-arch ${ARCH} -isysroot ${SYSROOT}"
   make clean
-  ./configure --host="${HOST}" && make
+  autoreconf -i && ./configure --host="${HOST}" && make
   mkdir -p ${PREFIX}/lib/
   cp -p src/.libs/libjansson.a ${PREFIX}/lib/libjansson.a
 }
